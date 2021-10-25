@@ -27,4 +27,11 @@ public class BoardRepository {
     public List<Board> findAll() {
         return new ArrayList<>(store.values());
     }
+
+    public void update(Long boardId, Board updateParam) {
+        Board findBoard = findById(boardId);
+        findBoard.setBoardTitle(updateParam.getBoardTitle());
+        findBoard.setContent(updateParam.getContent());
+    }
+
 }

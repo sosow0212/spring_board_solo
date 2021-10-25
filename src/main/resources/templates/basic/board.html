@@ -11,22 +11,45 @@
     <title>boards</title>
 </head>
 <body>
-<br>
-<h1 class="text-center">Id</h1>
-<br>
+
 <div class="container">
-    <form>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">제목</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <div class="py-5 text-center">
+        <h2>게시글 상세</h2>
+    </div>
+
+    <!-- 추가 -->
+    <h2 th:if="${param.status}" th:text="'저장 완료!'"></h2>
+
+    <div>
+        <label for="boardId">board ID</label>
+        <input type="text" id="boardId" name="boardId" class="form-control"
+               value="1" th:value="${board.id}" readonly>
+    </div>
+    <div>
+        <label for="boardTitle">Title</label>
+        <input type="text" id="boardTitle" name="boardTitle" class="form-control"
+               value="Title" th:value="${board.boardTitle}" readonly>
+    </div>
+    <div>
+        <label for="content">content</label>
+        <input type="text" id="content" name="content" class="form-control"
+               value="10000" th:value="${board.content}" readonly>
+    </div>
+    <hr class="my-4">
+    <div class="row">
+        <div class="col">
+            <button class="w-100 btn btn-primary btn-lg"
+                    onclick="location.href='editForm.html'"
+                    th:onclick="|location.href='@{/basic/boards/{boardId}/edit(boardId=${board.id})}'|" type="button">게시글 수정</button>
         </div>
-        <br>
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">내용</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">내용</textarea>
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg"
+                    onclick="location.href='boards.html'"
+                    th:onclick="|location.href='@{/basic/boards}'|"
+                    type="button">목록으로</button>
         </div>
-    </form>
-</div>
+    </div>
+</div> <!-- /container -->
 
 <!-- Optional JavaScript; choose one of the two! -->
 

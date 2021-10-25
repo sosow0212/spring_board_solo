@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class Board {
     private Long id;
-    private String title;
+    private String boardTitle;
     private String content;
 
     public Board() {
@@ -16,7 +16,7 @@ public class Board {
     }
 
     public Board(String title, String content) {
-        this.title = title;
+        this.boardTitle = title;
         this.content = content;
     }
 }
