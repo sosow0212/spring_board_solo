@@ -18,7 +18,7 @@ public class BasicBoardController {
 
     private final BoardRepository boardRepository;
 
-    @GetMapping
+    @GetMapping // 출력
     public String boards(Model model) {
         List<Board> boards = boardRepository.findAll();
         model.addAttribute("boards", boards);
@@ -26,7 +26,7 @@ public class BasicBoardController {
     }
 
 
-    @GetMapping("{boardId}")
+    @GetMapping("{boardId}") // 각각의 게시물 출력
     public String board(@PathVariable long boardId, Model model) {
         Board board = boardRepository.findById(boardId);
         model.addAttribute("board", board);
@@ -37,6 +37,7 @@ public class BasicBoardController {
     public String addForm() {
         return "basic/addForm";
     }
+
 
     @PostMapping("/add")
     public String addBoard(Board board, RedirectAttributes redirectAttributes) {
